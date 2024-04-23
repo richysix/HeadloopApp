@@ -4,22 +4,16 @@
     <h1>Headloop Design</h1>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
-        <p>
-            {{ form.primer_f.label }}<br>
-            {{ form.primer_f(size=32) }}
-        </p>
-        <p>
-            {{ form.primer_r.label }}<br>
-            {{ form.primer_r(size=32) }}
-        </p>
-        <p>
-            {{ form.guide_seq.label }}<br>
-            {{ form.guide_seq(size=50) }}
-        </p>
-        <p>
-            {{ form.orientation.label }}<br>
-            {{ form.orientation() }}
-        </p>
+        {% for field in [form.primer_f, form.primer_r, form.guide_seq, form.orientation] %}
+            <p>
+                {{ field.label }}<br>
+                {% if field.type == "StringField" %}
+                {{ field(size=50) }}
+                {% else %}
+                {{ field() }}
+                {% endif %}
+            </p>
+        {% endfor %}
         <p>{{ form.submit() }}</p>
     </form>
 {% endblock %}
