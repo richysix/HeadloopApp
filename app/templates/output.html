@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Headloop Design Results</h1>
+    <p>{{ primer_f }}</p>
+    <p>{{ primer_r }}</p>
+    <p>{{ hl_results }}</p>
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Forward Primer</th>
+            <th>Reverse Primer</th>
+            <th>Headloop Primer</th>
+            <th>Warnings</th>
+        </tr>
+        {% for primer_info in hl_results %}
+        <tr>
+            <td>{{ primer_info[0] }}</td>
+            <td>{{ primer_f }}</td>
+            <td>{{ primer_r }}</td>
+            <td>{{ primer_info[1] }}</td>
+            <td>{{ primer_info[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
