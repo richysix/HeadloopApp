@@ -3,10 +3,11 @@
 
 <head>
   <meta charset="utf-8">
-  <title>404 | Busch Lab</title>
+  <title>Busch Lab Headloop Design</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.buschlab.org/css/normalize.css">
   <link rel="stylesheet" href="https://www.buschlab.org/css/main.css?20220914">
+  <link rel="stylesheet" href="{{ url_for('static', filename='hl.css') }}?1">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700%7CUbuntu+Condensed" rel="stylesheet">
   <link rel="apple-touch-icon" sizes="180x180" href="https://www.buschlab.org/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://www.buschlab.org/favicon-32x32.png">
@@ -73,7 +74,7 @@
         </ul>
       </nav>
     </header>
-    <main>
+    <main id="hl">
         {% block content %}{% endblock %}
         {% with messages = get_flashed_messages() %}
         {% if messages %}

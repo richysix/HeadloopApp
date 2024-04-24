@@ -1,0 +1,44 @@
+main#hl table {
+    margin: 1em 0;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #0D3539; /* Same as dark circle in SVG */
+}
+
+main#hl div.summary table {
+    margin: 0;
+}
+
+main#hl thead tr {
+    font-weight: normal;
+    background-color: #6dbac1; /* Lighter than all coloured circles in SVG */
+    font-family: 'Ubuntu Condensed', Roboto, sans-serif;
+}
+
+main#hl table[data-sortable] th:not([data-sortable="false"]) {
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+    cursor: pointer;
+}
+
+main#hl th, main#hl td {
+    padding: 3px 5px;
+    border: 1px solid #0D3539; /* Same as dark circle in SVG */
+}
+
+main#hl tbody tr:nth-child(even) {
+    background-color: #F3F3F3; /* Light grey */
+}
+
+main#hl tbody tr.warning {
+    background-color: #f82d2d; /* Light grey */
+}
+
+main#hl th {
+    text-align: left;
+}
+
+main#hl td {
+    vertical-align: top;
+}

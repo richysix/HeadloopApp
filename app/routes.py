@@ -6,7 +6,6 @@ import os
 from headloop.designer import design
 
 @app.route('/', methods=['GET', 'POST'])
-@app.route('/index', methods=['GET', 'POST'])
 def index():
     form = InputForm()
     if form.validate_on_submit():
