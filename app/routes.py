@@ -5,16 +5,23 @@ from app.forms import InputForm
 import os
 from headloop.designer import design
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
+@app.get('/')
+def input():
+    form = InputForm()
+    return render_template('input.html', form=form)
+
+@app.post('/')
+def output_primers():
     form = InputForm()
     if form.validate_on_submit():
+        print(os.getenv("FLASK_DEBUG"))
         if os.getenv("FLASK_DEBUG"):
             flash('Form submitted F={}, R={}, G={}, O={}'.format(
                 form.primer_f.data, form.primer_r.data,
                 form.guide_seq.data, form.orientation.data))
         hl_design = design(form.primer_f.data, form.primer_r.data,
             form.guide_seq.data, form.orientation.data)
+        create_file_for_download(form, hl_design)
         hl_results = []
         for result in hl_design:
             if result.description[0:8] == "WARNING:":
@@ -25,10 +32,9 @@ def index():
                 desc_class = "success"
             hl_results.append((result.id, str(result.seq),
                 desc, desc_class))
-        return render_template(
-            'output.html',
-            primer_f = form.primer_f.data,
-            primer_r = form.primer_r.data,
-            hl_results = hl_results
-        )
-    return render_template('index.html', form=form)
+    return render_template(
+        'output.html',
+        primer_f = form.primer_f.data,
+        primer_r = form.primer_r.data,
+        hl_results = hl_results
+    )

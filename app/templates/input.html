@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Headloop Design</h1>
-    <form action="/" method="post" novalidate>
+    <p>Design headloop primers for testing cutting efficiency of CRISPR/Cas9 guide RNAs.</p>
+    <p>Enter the left and right primers and the guide RNA target plus 15 bp</p>
+    <p>Two designs are produced. One with the headloop tag on the forward primer and one with it on the reverse primer</p>
+
+    <form action="{{ url_for('input') }}" method="post" novalidate>
         {{ form.hidden_tag() }}
         {% for field in [form.primer_f, form.primer_r, form.guide_seq, form.orientation] %}
             <p>
@@ -23,4 +26,8 @@
         {% endfor %}
         <p>{{ form.submit() }}</p>
     </form>
+    <hr>
+    <p>This app uses the python <a href="https://github.com/GTPowell21/Headloop">Headloop</a> module written by Gareth T. Powell
+    </p>
+    <p>A protocol for the headloop PCR is available <a href="https://www.bio-protocol.org/exchange/preprintdetail?type=3&id=930">here</a></p>
 {% endblock %}
