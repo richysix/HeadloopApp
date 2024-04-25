@@ -1,6 +1,7 @@
 from flask import render_template, flash, url_for
 from app import app
 from app.forms import InputForm
+from app.helpers import create_file_for_download
 
 import os
 from headloop.designer import design
@@ -21,7 +22,7 @@ def output_primers():
                 form.guide_seq.data, form.orientation.data))
         hl_design = design(form.primer_f.data, form.primer_r.data,
             form.guide_seq.data, form.orientation.data)
-        create_file_for_download(form, hl_design)
+        tmp_file_name = create_file_for_download(app, form, hl_design)
         hl_results = []
         for result in hl_design:
             if result.description[0:8] == "WARNING:":
