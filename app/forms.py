@@ -32,3 +32,12 @@ class InputForm(FlaskForm):
         choices = [("sense", "Forward"), ("antisense", "Reverse")], 
         validators=[DataRequired()])
     submit = SubmitField('Design Headloop Primers')
+
+class DownloadForm(FlaskForm):
+    primer_f = StringField()
+    primer_r = StringField()
+    hl_sense = StringField()
+    notes_sense = StringField()
+    hl_antisense = StringField()
+    notes_antisense = StringField()
+    submit = SubmitField('Download results as csv')

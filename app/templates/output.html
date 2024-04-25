@@ -30,5 +30,30 @@
     </table>
 {% endfor %}
 
+<form action="{{ url_for('download') }}" method="post" novalidate>
+    {{ download_form.hidden_tag() }}
+    <div class="hidden">
+        <p>
+            <input id="primer_f" name="primer_f" type="text" value="{{ primer_f }}">
+        </p>
+        <p>
+            <input id="primer_r" name="primer_r" type="text" value="{{ primer_r }}">
+        </p>
+        <p>
+            <input id="hl_sense" name="hl_sense" type="text" value="{{ hl_results[0][1] }}">
+        </p>
+        <p>
+            <input id="notes_sense" name="notes_sense" type="text" value="{{ hl_results[0][2] }}">
+        </p>
+        <p>
+            <input id="hl_antisense" name="hl_antisense" type="text" value="{{ hl_results[1][1] }}">
+        </p>
+        <p>
+            <input id="notes_antisense" name="notes_antisense" type="text" value="{{ hl_results[1][2] }}">
+        </p>
+    </div>
+    <p>{{ download_form.submit() }}</p>
+</form>
+
     <a href="{{ url_for('input') }}">Back to Design Page</a>
 {% endblock %}
