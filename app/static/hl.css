@@ -31,8 +31,8 @@ main#hl tbody tr:nth-child(even) {
     background-color: #F3F3F3; /* Light grey */
 }
 
-main#hl tbody tr.warning {
-    background-color: #f82d2d; /* Light grey */
+main#hl .warning {
+    color: #A84232; /* Red */
 }
 
 main#hl th {

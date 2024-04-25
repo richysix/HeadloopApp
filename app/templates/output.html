@@ -22,13 +22,12 @@
                 <th scope="row">Headloop Primer</th>
                 <td>{{ primer_info[1] }}</td>
             </tr>
-            <tr class="{{ primer_info[3] }}">
+            <tr>
                 <th scope="row">Notes</th>
-                <td>{{ primer_info[2] }}</td>
+                <td class="{{ primer_info[3] }}">{{ primer_info[2] }}</td>
             </tr>
         </tbody>
     </table>
-{% endfor %}
 
-    <a href="{{ url_for('index') }}">Back to Design Page</a>
+    <a href="{{ url_for('input') }}">Back to Design Page</a>
 {% endblock %}
