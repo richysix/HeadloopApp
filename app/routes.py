@@ -20,7 +20,6 @@ def output_primers():
                 form.guide_seq.data, form.orientation.data))
         hl_design = design(form.primer_f.data, form.primer_r.data,
             form.guide_seq.data, form.orientation.data)
-        # tmp_file_name = create_file_for_download(app, form, hl_design)
         hl_results = []
         for result in hl_design:
             if result.description[0:8] == "WARNING:":
@@ -43,7 +42,9 @@ def download():
     download_form = DownloadForm()
     if download_form.validate_on_submit():
         lines = [
-            ",".join(['Name', 'ForwardPrimer', 'ReversePrimer', 'HeadloopPrimer', 'Notes']),
+            ",".join([
+                'Name', 'ForwardPrimer', 'ReversePrimer', 'HeadloopPrimer',
+                'Notes']),
             ",".join([
                 "SenseHL",
                 download_form.primer_f.data,
