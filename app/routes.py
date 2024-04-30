@@ -1,17 +1,12 @@
-from flask import render_template, flash, url_for, make_response
+from flask import render_template, redirect, flash, url_for, make_response, session
 from app import app
 from app.forms import InputForm, DownloadForm
 
 import os
 from headloop.designer import design
 
-@app.get('/')
+@app.route('/', methods=['GET', 'POST'])
 def input():
-    form = InputForm()
-    return render_template('input.html', form=form)
-
-@app.post('/')
-def output_primers():
     form = InputForm()
     if form.validate_on_submit():
         if os.getenv("FLASK_DEBUG"):
@@ -28,12 +23,20 @@ def output_primers():
                 desc_class = "success"
             hl_results.append((result.id, str(result.seq),
                 result.description, desc_class))
+        session['primer_f'] = form.primer_f.data
+        session['primer_r'] = form.primer_r.data
+        session['hl_results'] = hl_results
+        return redirect(url_for('output'))
+    return render_template('input.html', form=form)
+
+@app.get('/output')
+def output():
     download_form = DownloadForm()
     return render_template(
         'output.html',
-        primer_f = form.primer_f.data,
-        primer_r = form.primer_r.data,
-        hl_results = hl_results,
+        primer_f = session['primer_f'],
+        primer_r = session['primer_r'],
+        hl_results = session['hl_results'],
         download_form = download_form
     )
 
