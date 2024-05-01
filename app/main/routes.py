@@ -72,7 +72,3 @@ def download():
     resp.headers['Content-Disposition'] = 'filename="hl.csv"'
     resp.headers['Content-type'] = 'text/csv'
     return resp
-
-@bp.errorhandler(404)
-def not_found_error(error):
-    return render_template('404.html'), 404
