@@ -47,26 +47,23 @@ def output():
 @bp.post('/download')
 def download():
     download_form = DownloadForm()
+    hl_results = session['hl_results']
+    primer_f = session['primer_f']
+    primer_r = session['primer_r']
     if download_form.validate_on_submit():
         lines = [
             ",".join([
                 'Name', 'ForwardPrimer', 'ReversePrimer', 'HeadloopPrimer',
-                'Notes']),
-            ",".join([
-                "SenseHL",
-                download_form.primer_f.data,
-                download_form.primer_r.data,
-                download_form.hl_sense.data,
-                download_form.notes_sense.data,
-            ]),
-            ",".join([
-                "AntisenseHL",
-                download_form.primer_f.data,
-                download_form.primer_r.data,
-                download_form.hl_antisense.data,
-                download_form.notes_antisense.data,
+                'Notes']) ]
+        for result in hl_results:
+            line = ",".join([
+                result[0],
+                primer_f,
+                primer_r,
+                result[1],
+                result[2],
             ])
-        ]
+            lines.append(line)
         text = "\n".join(lines)
     resp = make_response(text)
     resp.headers['Content-Disposition'] = 'filename="hl.csv"'
