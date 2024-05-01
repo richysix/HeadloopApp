@@ -16,11 +16,9 @@
                 {{ field() }}
                 {% endif %}
                 {% if field.errors %}
-                <ul class="errors">
-                    {% for error in field.errors %}
-                    <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
+                {% for error in field.errors %}
+                    <p class="warning">{{ error }}</p>
+                {% endfor %}
                 {% endif %}
             </p>
         {% endfor %}
