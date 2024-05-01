@@ -1,0 +1,11 @@
+[project]
+name = "headloop_design_app"
+version = "0.0.1"
+description = "App to design headloop primers."
+dependencies = [
+    "flask",
+]
+
+[build-system]
+requires = ["flit_core<4"]
+build-backend = "flit_core.buildapi"
