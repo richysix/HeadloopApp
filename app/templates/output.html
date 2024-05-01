@@ -30,7 +30,7 @@
     </table>
 {% endfor %}
 
-<form action="{{ url_for('download') }}" method="post" novalidate>
+<form action="{{ url_for('main.download') }}" method="post" novalidate>
     {{ download_form.hidden_tag() }}
     <div class="hidden">
         <p>
@@ -55,5 +55,5 @@
     <p>{{ download_form.submit() }}</p>
 </form>
 
-    <a href="{{ url_for('input') }}">Back to Design Page</a>
+    <a href="{{ url_for('main.input') }}">Back to Design Page</a>
 {% endblock %}

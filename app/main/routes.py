@@ -1,11 +1,15 @@
-from flask import render_template, redirect, flash, url_for, make_response, session
-from app import app
+from flask import (
+    render_template, redirect, request, flash, url_for,
+    make_response, session
+)
+
+from app.main import bp
 from app.forms import InputForm, DownloadForm
 
 import os
 from headloop.designer import design
 
-@app.route('/', methods=['GET', 'POST'])
+@bp.route('/', methods=['GET', 'POST'])
 def input():
     form = InputForm()
     if form.validate_on_submit():
@@ -26,10 +30,10 @@ def input():
         session['primer_f'] = form.primer_f.data
         session['primer_r'] = form.primer_r.data
         session['hl_results'] = hl_results
-        return redirect(url_for('output'))
+        return redirect(url_for('main.output'))
     return render_template('input.html', form=form)
 
-@app.get('/output')
+@bp.get('/output')
 def output():
     download_form = DownloadForm()
     return render_template(
@@ -40,7 +44,7 @@ def output():
         download_form = download_form
     )
 
-@app.post('/download')
+@bp.post('/download')
 def download():
     download_form = DownloadForm()
     if download_form.validate_on_submit():
@@ -69,6 +73,6 @@ def download():
     resp.headers['Content-type'] = 'text/csv'
     return resp
 
-@app.errorhandler(404)
+@bp.errorhandler(404)
 def not_found_error(error):
     return render_template('404.html'), 404

@@ -5,7 +5,7 @@
     <p>Enter the left and right primers (for an amplicon covering the target guide sequence) and the guide RNA target plus 15 bp</p>
     <p>Two designs are produced. One with the headloop tag on the forward primer and one with it on the reverse primer</p>
 
-    <form action="{{ url_for('input') }}" method="post" novalidate>
+    <form action="{{ url_for('main.input') }}" method="post" novalidate>
         {{ form.hidden_tag() }}
         {% for field in [form.primer_f, form.primer_r, form.guide_seq, form.orientation] %}
             <p>
