@@ -7,6 +7,7 @@ from app.main import bp
 from app.forms import InputForm, DownloadForm
 
 import os
+from datetime import datetime
 from headloop.designer import design
 
 @bp.route('/', methods=['GET', 'POST'])
@@ -31,6 +32,11 @@ def input():
         session['primer_r'] = form.primer_r.data
         session['hl_results'] = hl_results
         return redirect(url_for('main.output'))
+    else:
+        with open('logs/testing.txt', 'a') as f:
+            print(f"{datetime.now().strftime('%a %d %b %Y, %I:%M%p')} "\
+                f"Route input, form not submitted or not validated!",
+                file = f)
     return render_template('input.html', form=form)
 
 @bp.get('/output')
