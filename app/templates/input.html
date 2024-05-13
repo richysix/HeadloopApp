@@ -3,7 +3,9 @@
 {% block content %}
     <p>Design headloop primers for testing cutting efficiency of CRISPR/Cas9 guide RNAs.</p>
     <p>Enter the left and right primers (for an amplicon covering the target guide sequence) and the guide RNA target plus 15 bp</p>
-    <p>Two designs are produced. One with the headloop tag on the forward primer and one with it on the reverse primer</p>
+    <p>Two designs are produced. One with the headloop tag on the forward primer and one with it on the reverse primer.
+        If the primer melting temperatures are significantly different, a warning is given.
+    </p>
 
     <form action="{{ url_for('main.input') }}" method="post" novalidate>
         {{ form.hidden_tag() }}
@@ -28,9 +30,13 @@
     <p>The guide RNA sequence plus context should by the guide target sequence 
         including PAM plus the next 15 bp. The sequence should come from the appropriate strand. 
         For example, for the sequence shown below, with the guide target sequence 
-        on the other strand and the PAM marked in red, the sequence to use is
-        the reverse complement of the sequence marked in bold</p>
+        on the forward strand and the PAM marked in red, the sequence to use is marked in bold</p>
+    
+    <p>TGAATGATGA<b>GGACAGACGTGTTTCTCCAG<span style="color:red">CGG</span>AGGAAGCGTAGAGAT</b>GTTCTGCTCTCC</p>
 
+    <p>If the guide target sequence is on the reverse strand as shown below, the sequence
+        to use would be the reverse complement of the sequence shown in bold.
+    </p>
     <p>CAGGTCGAGG<b>GTTCTGTCAGGACGT<span style="color:red">CCT</span>GGTGTCCGACCTTCCCAACG</b>GGCCGCAGTAT</p>
     <hr>
 
