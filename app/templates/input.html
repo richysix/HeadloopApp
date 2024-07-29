@@ -2,7 +2,7 @@
 
 {% block content %}
     <p>Design headloop primers for testing cutting efficiency of CRISPR/Cas9 guide RNAs.</p>
-    <p>Enter the left and right primers (for an amplicon covering the target guide sequence) and the guide RNA target plus 15 bp</p>
+    <p>Enter the left and right primers (for an amplicon covering the target guide sequence) and the guide RNA target plus 15 bp.</p>
     <p>Two designs are produced. One with the headloop tag on the forward primer and one with it on the reverse primer.
         If the primer melting temperatures are significantly different, a warning is given.
     </p>
@@ -27,7 +27,7 @@
         <p>{{ form.submit() }}</p>
     </form>
     <hr>
-    <p>The guide RNA sequence plus context should by the guide target sequence 
+    <p>The guide RNA sequence plus context should be the guide target sequence 
         including PAM plus the next 15 bp. The sequence should come from the appropriate strand. 
         For example, for the sequence shown below, with the guide target sequence 
         on the forward strand and the PAM marked in red, the sequence to use is marked in bold</p>
@@ -40,9 +40,9 @@
     <p>CAGGTCGAGG<b>GTTCTGTCAGGACGT<span style="color:red">CCT</span>GGTGTCCGACCTTCCCAACG</b>GGCCGCAGTAT</p>
     <hr>
 
-    <p>This app uses the python <a href="https://github.com/GTPowell21/Headloop">Headloop</a> module written by Gareth T. Powell</p>
+    <p>This app uses the python <a href="https://github.com/GTPowell21/Headloop">Headloop</a> module written by Gareth T. Powell.</p>
 
-    <p>Using headloop PCR to screen for CRISPR/Cas9 induced indels is described in <a href="https://doi.org/10.7554/eLife.59683">Kroll et al (2021)</a></p>
+    <p>Using headloop PCR to screen for CRISPR/Cas9 induced indels is described in <a href="https://doi.org/10.7554/eLife.59683">Kroll <i>et al.</i> (2021)</a>.</p>
 
-    <p>A protocol is available <a href="https://www.bio-protocol.org/exchange/preprintdetail?type=3&id=930">here</a></p>
+    <p>A <a href="https://www.bio-protocol.org/exchange/preprintdetail?type=3&id=930">protocol</a> is available.</p>
 {% endblock %}
