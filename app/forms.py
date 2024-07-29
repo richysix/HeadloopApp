@@ -40,4 +40,4 @@ class DownloadForm(FlaskForm):
     notes_sense = StringField()
     hl_antisense = StringField()
     notes_antisense = StringField()
-    submit = SubmitField('Download results as csv')
+    submit = SubmitField('Download results as CSV')
